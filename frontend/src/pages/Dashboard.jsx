@@ -9,6 +9,19 @@ const Dashboard = () => {
   const [experience, setExperience] = useState("");
   const navigate = useNavigate();
 
+  // 🔥 LOGOUT FUNCTION
+  const handleLogout = async () => {
+    try {
+      // await axiosInstance.post(API_PATHS.AUTH.LOGOUT); // optional
+      console.log("Logout Done");
+    } catch (err) {
+      console.log(err);
+    }
+
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
+
   const fetchSessions = async () => {
     try {
       const res = await axiosInstance.get(API_PATHS.SESSION.GET_ALL);
@@ -42,12 +55,21 @@ const Dashboard = () => {
 
   return (
     <div className="max-w-6xl mx-auto">
-      {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold">Dashboard</h1>
-        <p className="text-gray-500 mt-1">
-          Manage your interview preparation sessions
-        </p>
+      {/* 🔥 HEADER WITH LOGOUT */}
+      <div className="mb-8 flex justify-between items-center">
+        <div>
+          <h1 className="text-3xl font-bold">Dashboard</h1>
+          <p className="text-gray-500 mt-1">
+            Manage your interview preparation sessions
+          </p>
+        </div>
+
+        <button
+          onClick={handleLogout}
+          className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition"
+        >
+          Logout
+        </button>
       </div>
 
       {/* Create Session Card */}
