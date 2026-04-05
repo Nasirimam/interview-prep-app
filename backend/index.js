@@ -18,7 +18,7 @@ let app = express(); // object = {listen}
 
 app.use(
   cors({
-    origin: "https://interview-prep-app-oant.onrender.com/",
+    origin: "https://interview-prep-app-oant.onrender.com",
   }),
 );
 
