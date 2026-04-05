@@ -11,6 +11,7 @@ import SkeletonCard from "../components/SkeletonCard";
 import { API_PATHS } from "../utils/apiPaths";
 
 import axios from "../utils/axiosInstance";
+import axiosInstance from "../utils/axiosInstance";
 
 const parseError = (err) => {
   console.log(err);
@@ -48,7 +49,9 @@ const InterviewPrep = () => {
   const generateQuestions = async () => {
     setGenerating(true);
     try {
-      await axios.post(API_PATHS.AI.GENERATE_QUESTIONS, { sessionId: id });
+      await axiosInstance.post(API_PATHS.AI.GENERATE_QUESTIONS, {
+        sessionId: id,
+      });
       await fetchQuestions();
       toast.success("Questions generated!");
     } catch (err) {

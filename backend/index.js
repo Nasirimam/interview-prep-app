@@ -5,6 +5,13 @@ import cors from "cors"; // cross origin resource sharing (browser blocks the re
 // 1) we are importing express module which we installed using npm i
 
 import userRoutes from "./routes/auth-route.js";
+import sessionRoutes from "./routes/session-route.js";
+import { connectDB } from "./config/database-config.js";
+import aiRoutes from "./routes/aiRoutes.js";
+import dotenv from "dotenv";
+dotenv.config();
+
+const PORT = process.env.PORT || 9000;
 
 // 2) call/invoke the function
 let app = express(); // object = {listen}
@@ -15,14 +22,17 @@ app.use(
   }),
 );
 
-app.use(express.urlencoded({ extended: true }));// this 
+app.use(express.urlencoded({ extended: true })); // this
 app.use(express.json());
 
 app.use("/api/auth", userRoutes); // http://localhost:9001/api/auth/signup
+app.use("/api/sessions", sessionRoutes);
+app.use("/api/ai", aiRoutes);
 
 // 3) assign a port number to our server
-app.listen(9001, () => {
-  console.log("Server Started.....");
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+  connectDB();
 });
 // app.listen(PORT_NUMBER, callback)
 

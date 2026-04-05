@@ -22,7 +22,8 @@ const SignUp = () => {
     }
   };
 
-  return   <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-yellow-100 via-white to-yellow-50 px-4">
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-yellow-100 via-white to-yellow-50 px-4">
       <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg">
         {/* Heading */}
         <h2 className="text-2xl font-bold text-center mb-2">
@@ -66,9 +67,9 @@ const SignUp = () => {
 
         {/* Divider */}
         <div className="flex items-center my-5">
-          <div className="flex-1 h-[1px] bg-gray-200"></div>
+          <div className="flex-1 h-px bg-gray-200"></div>
           <p className="px-3 text-gray-400 text-sm">OR</p>
-          <div className="flex-1 h-[1px] bg-gray-200"></div>
+          <div className="flex-1 h-px bg-gray-200"></div>
         </div>
 
         {/* Login Link */}
@@ -82,7 +83,8 @@ const SignUp = () => {
           </Link>
         </p>
       </div>
-    </div>;
+    </div>
+  );
 };
 
 export default SignUp;
