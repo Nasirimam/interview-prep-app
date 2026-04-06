@@ -66,24 +66,29 @@ const InterviewPrep = () => {
   }, [fetchQuestions]);
 
   return (
-    <div className="w-full min-h-screen bg-slate-50">
+    <div className="w-full min-h-screen bg-linear-to-br from-gray-900 via-black to-gray-800 text-white">
       <Toaster
         position="top-right"
-        toastOptions={{ className: "!text-sm !font-medium" }}
+        toastOptions={{
+          className:
+            "!bg-gray-900 !text-white !border !border-gray-700 !shadow-lg",
+        }}
       />
 
       <div className="max-w-4xl mx-auto px-6 py-8">
-        {/* ── Header ── */}
+        {/* HEADER */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <p className="text-xs text-slate-400 font-medium tracking-wide uppercase mb-1">
+            <p className="text-xs text-gray-400 font-medium tracking-wide uppercase mb-1">
               Session ID: {id?.slice(0, 8)}
             </p>
-            <h1 className="text-2xl font-bold text-slate-800">
+
+            <h1 className="text-2xl font-bold text-white">
               Interview Questions
             </h1>
+
             {!loading && !fetchError && (
-              <p className="text-sm text-slate-500 mt-0.5">
+              <p className="text-sm text-gray-400 mt-0.5">
                 {questions.length > 0
                   ? `${questions.length} question${questions.length !== 1 ? "s" : ""} ready`
                   : "No questions yet"}
@@ -98,10 +103,10 @@ const InterviewPrep = () => {
           />
         </div>
 
-        {/* ── Divider ── */}
-        <div className="border-t border-slate-200 mb-8" />
+        {/* DIVIDER */}
+        <div className="border-t border-gray-700 mb-8" />
 
-        {/* ── Content ── */}
+        {/* CONTENT */}
         {loading ? (
           <div className="space-y-4">
             {[...Array(4)].map((_, i) => (
@@ -120,7 +125,8 @@ const InterviewPrep = () => {
                   key={q._id}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.2, delay: i * 0.05 }}
+                  transition={{ duration: 0.25, delay: i * 0.05 }}
+                  className="bg-gray-900/80 backdrop-blur-lg border border-gray-700 rounded-xl p-4 shadow-lg hover:shadow-cyan-500/10 transition"
                 >
                   <QAItem item={q} />
                 </motion.div>

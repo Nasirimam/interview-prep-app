@@ -5,7 +5,12 @@ const GenerateButton = ({ onClick, generating, loading }) => (
   <button
     onClick={onClick}
     disabled={generating || loading}
-    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed text-white text-sm font-medium transition-colors shadow-sm"
+    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg 
+    bg-linear-to-r from-cyan-400 to-blue-500 
+    text-black text-sm font-medium 
+    hover:scale-105 transition duration-300 
+    shadow-lg hover:shadow-cyan-500/40 
+    disabled:opacity-50 disabled:cursor-not-allowed"
   >
     {generating ? (
       <>
